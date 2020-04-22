@@ -1,32 +1,30 @@
 # Step By Step
 
-## 2. Seting the scene
+## Seting the scene
 
 This project was created to practise the folowing aspects:
 
-MVC
-Polymorphic Models
-User authentication with Devise
-Active storage atachments with Cloudinary(SaaS)
-AJAX
+* MVC
+* Polymorphic Models
+* User authentication with Devise
+* Active storage atachments with Cloudinary(SaaS)
+* AJAX
 
 ## 1. Environment
 
-```console
-$ rails new Blog --database=postgresql*
-
+```  console
+$ rails new Blog --database=postgresql
+```
 
 ### 1.1 Webpack - dependencies
 
-```console
-$ yarn add bootstrap jquery@~3.4.1 poppers @fortawesome/fontawesome-free*
-
-
-```console
+```  console
+$ yarn add bootstrap jquery@~3.4.1 poppers @fortawesome/fontawesome-free
+```
 
 *#webpacker.yml*
 
-```ruby
+```  ruby
 resolved_paths: [app/assets]
 ```
 
@@ -34,7 +32,7 @@ resolved_paths: [app/assets]
 
 *#config/webpack/environment*
 
-```ruby
+``` ruby
 
   const webpack = require('webpack')
   environment.plugins.append('Provide',
@@ -51,22 +49,22 @@ resolved_paths: [app/assets]
 
 *#app/assets/stylesheets/application.css*
 
-```ruby
+``` ruby
 *= require bootstrap/scss/bootstrap
 ```
 
 *#app/javascript/packs/application.js*
 
-```ruby
+``` ruby
 require('jquery')
 global.$ = jQuery;
 import "@fortawesome/fontawesome-free/js/all"
 import "./bootstrapjs"
 ```
 
-Create *..packs/stylesheets/bootstrapjs.js*
+Create <addr>..packs/stylesheets/bootstrapjs.js</addr>
 
-```javascript
+``` javascript
 
 $(function() {
   $('[data-toggle="tooltip"]').tooltip();
@@ -79,10 +77,9 @@ $(function() {
 ```
 
 ### 2. Gemfile
-St
 Gems on top of the default stack:
 
-```ruby
+``` ruby
 gem 'cloudinary'
 gem 'devise'
 gem 'dotenv-rails', groups: [:development, :test]
@@ -102,19 +99,19 @@ $ bundle
 
 ### 2.1 Devise
 
-```ruby
+``` ruby
 $ rails g devise:install
 ```
 
 *#config/environments/development.rb*
 
-```ruby
+``` ruby
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 ```
 
 *#app/views/leyouts/application.html.erb*
 
-```ruby
+``` ruby
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
@@ -123,13 +120,13 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 ### 2.2 Simple_form
 
-```console
+``` console
 $ rails generate simple_form:install
 ```
 
 ### 2.3 Dotenv-rails
 
-```console
+``` console
 $ touch .env
 $ echo '.env*' >> .gitignore
 ```
@@ -138,7 +135,7 @@ $ echo '.env*' >> .gitignore
 
 Save Environment variable into the .env file.
 
-```console
+``` console
 $ rails active_storage:install
 ```
 *config/storage.yml*
@@ -155,6 +152,16 @@ config.active_storage.service = :cloudinary
 
 Push CLOUDINARY_URL env variable to Heroku
 
-```console
+``` console
 $ heroku config:set CLOUDINARY_URL
+```
+
+# Tests
+
+``` console
+$ rake spec
+```
+or
+``` console
+$ rails spec
 ```
