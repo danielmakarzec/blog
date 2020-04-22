@@ -66,4 +66,12 @@ RSpec.describe User, type: :model do
       expect(user2).to be_invalid
     end
   end
+
+  # assosiations
+  describe 'assosiations' do
+    it "has many posts" do
+      # post = user.posts.new
+      should respond_to(:posts)
+    end
+  end
 end
