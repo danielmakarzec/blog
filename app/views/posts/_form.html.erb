@@ -1,0 +1,18 @@
+ <div class="form-post-wraper">
+  <div class="container h-100">
+    <%= form_with model: @post do |f| %>
+      <div class="form-inputs">
+        <%= f.label :title, class: 'form-control' %>
+        <%= f.text_field :title, class: 'form-control string' %>
+        <br>
+        <%= f.label :picture, class: 'form-control' %>
+        <%= f.file_field :picture %>
+        <br><br>
+        <%= f.rich_text_area :body %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, method: 'post', class: 'btn-warning w-100' %>
+      </div>
+    <% end %>
+  </div>
+</div>

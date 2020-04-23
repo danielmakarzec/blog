@@ -1,0 +1,13 @@
+<%= render 'layouts/partials/navbar', locals: {theme: 'navbar-light'} %>
+<%= render 'article' %>
+
+<div class="container section" style='padding-top: 5vh;'>
+  <%= render 'comments/form', commentable: @post, local: Comment.new %>
+  <h2 class="text-dark"><%= pluralize(@post.num_of_comments, 'comment') %></h2>
+  <div id="comment-pane" class='comment-pane'>
+    <% @comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
+</div>
+<%= render 'layouts/partials/footer' %>

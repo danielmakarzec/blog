@@ -1,0 +1,25 @@
+<%= image_tag @post.picture, class: 'banner' %>
+<div class='lead text-muted'>
+  <div><%= @post.created_at.strftime("%d %B %y") %> by <b><%= @post.user.username %></b></div>
+  <i class="fas fa-book-reader"></i>
+  <%= @post.views %>
+  <span class="d-none d-sm-inline"><%= 'view'.pluralize(@post.views) %></span>
+  <span>| <i class="far fa-comments"></i></span>
+  <span> <%= @post.num_of_comments %></span>
+  <span class="d-none d-sm-inline"><%= 'comment'.pluralize(@post.num_of_comments) %></span>
+</div>
+
+<div class="container">
+  <div class='post-header'>
+    <h1 class='post-title text-muted'><%= @post.title %></h1>
+    <small class='text-secondary'>Written by <b><%= @post.user.username %></b>. Contact me: <%= link_to @post.user.email, '#' %></small>
+  </div>
+  <p><%= @post.body %></p>
+</div>
+
+<div class="container post-footer">
+  <% if current_user && current_user.admin %>
+    <%= link_to 'delete', post_path, method: 'delete', class: 'btn btn-danger', data: { confirm: "Are you sure?" }%>
+  <% end %>
+  <%= link_to 'back', root_path, class: 'btn btn-light text-muted'%>
+</div>

@@ -1,0 +1,47 @@
+<div class="banner-wraper">
+  <%= render 'layouts/partials/alerts' %>
+  <%= render 'layouts/partials/navbar', locals: {theme: 'navbar-dark'} %>
+  <div class="container">
+    <h4 class='sub-title'>Welcome to</h4>
+    <h1 class="grand-title">RoR Blog</h1>
+    <h4 class='sub-title'>This project was built using Ruby on Rails framework. The application is dynamic and asynchronous thanks to JQuery. Feel free to check it out on your phone. It's responsive. Enjoy!</h4>
+  </div>
+</div>
+
+<!-- top3 -->
+<%= render 'top3' %>
+
+<div class="container section">
+  <% if @posts.count > 0 %>
+    <h2 class="section-header text-dark">Whats new?</h2>
+    <% @posts.each do |post| %>
+      <div class="row post-card">
+        <%= link_to post, data: {turbolinks: false} do %>
+          <div class="col-12">
+            <h1 class='card-title h1'><%= post.title %></h1>
+            <div class="picture">
+              <%= image_tag(post.picture) %>
+            </div>
+            <p class='card-context text-secondary'><%= post.body.to_plain_text.truncate_words(50) %></p>
+            <div class="card--footer text-secondary">
+              <small>
+                <span><%= post.created_at.strftime("%d %B %y") %> by <strong><%= post.user.username %></strong></span>
+                |
+                <i class="fas fa-book-reader"></i>
+                <%= post.views %>
+                <span class="d-none d-sm-inline"><%= 'view'.pluralize(post.views) %></span>
+                <span>| <i class="far fa-comments"></i></span>
+                <span> <%= post.num_of_comments %></span>
+                <span class="d-none d-sm-inline"><%= 'comment'.pluralize(post.num_of_comments) %></span>
+              </small>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="digg_pagination">
+    <%= will_paginate @posts, :container => false %>
+  </div>
+</div>
+<%= render 'layouts/partials/footer' %>

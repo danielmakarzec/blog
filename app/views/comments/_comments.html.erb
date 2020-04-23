@@ -1,0 +1,46 @@
+<div class="row my-3">
+  <div class="col-4 col-md-2">
+      <%= cl_image_tag comment.user.avatar.key, height: 60, width: 60, radius: "max", crop: 'fill' %>
+  </div>
+  <div class="col-8 col-md-10">
+      <%= comment.user.username %>
+      (
+      <i class="far fa-comment-alt d-md-none"></i>
+      <small class="d-none d-md-inline">Total comments: </small>
+      <%= comment.user.number_of_comments %>
+      )
+      <%= render 'comments/edit_history_text', comment: comment %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-10 offset-md-2">
+    <div class="comment-body" id="comment-body-<%= comment.id %>">
+      <%= comment.body %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <% if current_user && (current_user == comment.user || current_user.admin) %>
+    <div class="col-12">
+      <div class="button-group d-flex justify-content-end" role='group' aria-label='Edit and Delete button group'>
+        <%= link_to "Edit", edit_comment_path(comment), class: 'btn btn-outline-warning btn-sm mx-1', remote: true %>
+        <%= link_to "Delete", comment, data: { confirm: "Are you sure?" }, class: 'btn btn-outline-danger btn-sm', method: :delete, remote: true %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- comments reply -->
+<div class="row justify-content-end">
+  <div class="col-12 col-md-10">
+    <% if comment.comments.count > 0 %>
+      <div class="inner-comment-container" id="reply-<%= comment.id %>">
+      <% comment.comments.each do |comment| %>
+        <%= render comment %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

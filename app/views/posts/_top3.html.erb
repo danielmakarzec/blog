@@ -1,0 +1,21 @@
+<div class="top3-wraper">
+  <div class="container section">
+    <h2 class="section-header text-dark">Hot Topics</h2>
+    <div class="row">
+      <% if @posts.count > 0 %>
+        <% @top.each do |item| %>
+          <div class="col-xs col-md-4">
+            <%= link_to item do %>
+              <div class="top3-picture" style='background-image: url(<%= url_for(item.picture) %>)' >
+                <div class='top3-lead'>
+                  <span class='text-dark'>Read <%= item.views %> times</span>
+                </div>
+              </div>
+              <p class='h2 my-3 text-dark'><%= item.title %></p>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
