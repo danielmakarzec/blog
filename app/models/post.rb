@@ -6,7 +6,14 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  validates :title, length: { in: 5...90 }
+  # validates :title, length: { in: 5...90 }
+
+  # pagination
+  self.per_page = 10
+
+  # Friendly URL
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   def num_of_comments
     parent_coments = comments.count
