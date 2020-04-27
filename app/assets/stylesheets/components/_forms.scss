@@ -1,0 +1,35 @@
+.edit-wraper{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.edit_user{
+  height: 100%;
+}
+.form-section{
+  margin: 1em auto;
+  padding: 2em;
+  border-top: 1px solid;
+  // border-bottom: 2px solid;
+  background: #fff;
+}
+form input[type='text'],
+form input[type='password'],
+form input[type='email'],
+form input[type='submit'] {
+  min-width: 20vw;
+  color: #888;
+}
+// form input[type='checkbox']{
+  // width: 16px !important;
+// }
+.form-post-wraper, .form-user-wraper {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input{
+  display: flex;
+  flex-direction: column;
+}

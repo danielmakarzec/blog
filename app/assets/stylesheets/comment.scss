@@ -1,0 +1,26 @@
+.comment-container {
+  padding-bottom: 1em;
+}
+.inner-comment-container {
+  margin: 1em;
+  padding-bottom: 1em;
+}
+.comment-pane{
+  margin-top: 5%;
+}
+.comment-avatar {
+  border-radius: 50%;
+  margin: 1em auto;
+  max-width: 30%;
+  max-height: 30%;
+}
+.comment-username {
+  font-size: 1.25em;
+  font-weight: 625;
+}
+.comment-body {
+  text-align: justify;
+}
+.reply-form{
+  background: #fff;
+}
