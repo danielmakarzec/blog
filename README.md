@@ -60,6 +60,9 @@ require('jquery')
 global.$ = jQuery;
 import "@fortawesome/fontawesome-free/js/all"
 import "./bootstrapjs"
+// for dropdowns to work fine //
+require("bootstrap/dist/js/bootstrap")
+
 ```
 
 Create <addr>..packs/stylesheets/bootstrapjs.js</addr>

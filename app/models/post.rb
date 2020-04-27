@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   # validates :title, length: { in: 5...90 }
 
   # pagination
-  self.per_page = 10
+  self.per_page = 8
 
   # Friendly URL
   extend FriendlyId
