@@ -18,6 +18,10 @@ form input[type='password'],
 form input[type='email'],
 form input[type='submit'] {
   min-width: 20vw;
+}
+form input[type='text'],
+form input[type='password'],
+form input[type='email'] {
   color: #888;
 }
 // form input[type='checkbox']{
